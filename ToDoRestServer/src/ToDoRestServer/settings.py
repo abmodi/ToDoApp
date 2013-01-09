@@ -1,5 +1,11 @@
 # Django settings for ToDoRestServer project.
 
+import os
+
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+SRC_ROOT = os.path.dirname(SITE_ROOT)
+ROOT_DIR = os.path.dirname(SRC_ROOT)
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -12,7 +18,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'C:\\Development\\Django_workspace\\ToDoRestServer\\src\\todoitems.db',                      # Or path to database file if using sqlite3.
+        'NAME': SRC_ROOT + '/todoitems.db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -64,7 +70,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    'C:/Development/Django_workspace/ToDoRestServer/static',
+    os.path.join(ROOT_DIR,'static'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -104,7 +110,7 @@ ROOT_URLCONF = 'ToDoRestServer.urls'
 WSGI_APPLICATION = 'ToDoRestServer.wsgi.application'
 
 TEMPLATE_DIRS = (
-    "C:/Development/Django_workspace/ToDoRestServer/Templates",
+    os.path.join(ROOT_DIR, "Templates"),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

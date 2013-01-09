@@ -83,7 +83,6 @@ app.AppView = Backbone.View.extend({
 			
 	},
 	addAll:function(){
-		alert("Adding All");
 		$("#todo-list").html("");
 		this.collection.each(this.addOne,this);	
 	},
