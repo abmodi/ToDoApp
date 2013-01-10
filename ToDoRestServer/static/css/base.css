@@ -34,6 +34,8 @@ body {
 	font-smoothing: antialiased;
 }
 
+
+
 #todoapp {
 	background: #fff;
 	background: rgba(255, 255, 255, 0.9);
@@ -255,6 +257,34 @@ label[for='toggle-all'] {
 	text-decoration: line-through;
 }
 
+#todo-list li #star {
+
+	position: absolute;
+	top: 0;
+	right: 50px;
+	bottom: 0;
+	width: 40px;
+	height: 40px;
+	margin: auto 0;
+	font-size: 22px;
+	color: #a88a8a;
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	transition: all 0.2s;
+	display:inline;
+}
+
+
+#todo-list li .starred:after {
+	content: url('star.jpg');
+}
+
+#todo-list li .no-starred:after {
+	content: url('no-star.jpg');
+}
+
 #todo-list li .destroy {
 	display: none;
 	position: absolute;
@@ -338,6 +368,7 @@ label[for='toggle-all'] {
 	position: absolute;
 	right: 0;
 	left: 0;
+	text-align:center;
 }
 
 #filters li {

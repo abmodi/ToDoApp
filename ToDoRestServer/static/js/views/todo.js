@@ -14,7 +14,21 @@ app.TodoView = Backbone.View.extend({
 		"click button.destroy":"deleteToDo",
 		"dblclick label":"editToDo",
 		"blur .edit":"close",
-		"keypress .edit":"updateOnEnter"
+		"keypress .edit":"updateOnEnter",
+		"click button#star":"toggleStar"
+	},
+
+	toggleStar:function(){
+
+		this.model.toggleStar();
+		/*if(this.model.get("starred"))
+		{
+			$("#star").removeClass("starred").addClass("no-starred");
+		}
+		else
+		{
+			$("#star").removeClass("no-starred").addClass("starred");
+		}*/
 	},
 	visible:function(){
 		if(app.ToDoFilter == "active")
@@ -30,6 +44,13 @@ app.TodoView = Backbone.View.extend({
 				this.hide();
 			else
 				this.show();
+		}
+		else if(app.ToDoFilter == "starred")
+		{
+			if(this.model.get("starred"))
+				this.show();
+			else
+				this.hide();
 		}
 		else
 			this.show();

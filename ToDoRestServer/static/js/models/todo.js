@@ -18,6 +18,10 @@ app.Todo = Backbone.Model.extend({
 		}
 		this.save();
 	},
+	toggleStar:function(){
+		this.set({'starred':!this.get('starred')});
+		this.save();
+	},
 	remove:function(){
 		this.destroy();
 	}
