@@ -1,7 +1,7 @@
 var app = app||{};
 
 app.AppView = Backbone.View.extend({
-	el: 'body',
+
 	statsTemplate: _.template( $('#stats-template').html() ),
 	initialize:function(){
 		this.collection.on('add',this.addOne, this);
@@ -62,7 +62,7 @@ app.AppView = Backbone.View.extend({
 	},
 	render:function(){
 		console.log("Rendering all todos");
-		
+		this.setElement("#todoapp");
 		//this.collection.forEach(this.addOne,this);
 		var completed = this.collection.completed().length;
 		var remaining = this.collection.remaining().length;

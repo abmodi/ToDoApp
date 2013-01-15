@@ -2,15 +2,24 @@ var app = app||{};
 
 Router = Backbone.Router.extend({
 	routes:{
-		"*filter":'setFilter',
+		"":'index',
+		"content":'content',
+		"content/*filter":'setFilter'
 	},
 	initialize: function(){
 		console.log("Initializing Router");
-		app.Todos = new app.TodoList();
-		app.appView = new app.AppView({collection:app.Todos});
+		app.landingPageView = new app.LandingPageView();
+		app.contentPageView = new app.ContentPageView();
 	},
 	start: function(){
-		Backbone.history.start();	
+		Backbone.history.start();
+		
+	},
+	index:function(){
+		app.landingPageView.render();
+	},
+	content:function(){
+		app.contentPageView.render();
 	},
 	setFilter:function(filter){
 		console.log("Set Filter" + filter);

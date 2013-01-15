@@ -19,22 +19,86 @@
 		<span id="todo-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left </span>
 		<ul id="filters">
 			<li>
-				<a class="selected" href="#/">All</a>
+				<a class="selected" href="#content/">All</a>
 			</li>
 			<li>
-				<a href="#/active">Active</a>
+				<a href="#content/active">Active</a>
 			</li>
 			<li>
-				<a href="#/completed">Completed</a>
+				<a href="#content/completed">Completed</a>
 			</li>
 			<li>
-				<a href="#/starred">Starred</a>
+				<a href="#content/starred">Starred</a>
 			</li>
 		</ul>
 		<% if (completed) { %>
 		<button id="clear-completed">Clear completed (<%= completed %>)</button>
 		<% } %>
 	</script>
+	<script type="text/template" id="landing-page-template">
+		<div id="head">
+			<h1>todos</h1>
+		</div>
+		<div id="error">
+		<%= error %>
+		</div>
+		<div id="login" class = "animate form">
+			<form method="POST" autocomplete="on">
+				<h3>Sign In</h3>
+				<p>
+					<label for="username" class="uname" data-icon="u">Username: </label>
+					<input type="text" name="username" id="signin-username" required="required" placeholder="username"/>
+				</p>
+				<p>
+					<label for="password" class="youpasswd" data-icon="p">Password: </label>
+					<input type="password" name="password" id="signin-password" required="required" placeholder="password"/>
+				</p>
+				<p class="login button">
+					<input type="submit" value="Sign In" id="sign-in-submit"/>
+				</p>
+			</form>
+		</div>
+		<div id="register" class="animate form">
+			<form method="POST" autocomplete="on">
+				<h3>Sign Up</h3>
+				<p>
+					<label for="usernamesignup" class="uname" data-icon="u">Username: </label>
+					<input type="text" name="username" id="signup-username" required="required"/>
+				</p>
+				<p>
+				<label>Password: </label>
+				<input type="password" name="password" id="signup-password"/>
+				</p>
+				<p>
+				<label>Email Id: </label>
+				<input type="email" name="email" id="signup-email"/>
+				</p>
+				<p>
+				<input type="submit" value="Sign Up" id="sign-up-submit"/>
+				</p>
+			</form>
+		</div>
+	</script>
+	
+	<script type="text/template" id="content-page-template">
+		<div id="todoapp">
+			<header id="header">
+				<h1>todos</h1>
+				<input id="new-todo" placeholder="What needs to be done?" autofocus/>
+			</header>
+			<section id="main">
+				<input id="toggle-all" type="checkbox">
+				<label for="toggle-all">Mark all as complete</label>
+				<ul id="todo-list"></ul>
+			</section>
+			<footer id="footer"></footer>
+		</div>
+		<div id="info">
+			<p>Double-click to edit a todo</p>
+			<p>Written by <a href="https://github.com/abmodi">Abhishek Modi</a></p>
+		</div>
+	</script>
+			
 </head>
 <body>
 	<script src="static/js/libs/jquery-min.js"></script>
@@ -44,25 +108,13 @@
 	<script src="static/js/collections/todos.js"></script>
 	<script src="static/js/views/todo.js"></script>
 	<script src="static/js/views/app.js"></script>
+	<script src="static/js/views/landing-page-view.js"></script>
+	<script src="static/js/views/content-page-view.js"></script>
 	<script src="static/js/routers/router.js"></script>
 	<script src="static/js/app.js"></script>
 	
-	<section id="todoapp">
-		<header id="header">
-			<h1>todos</h1>
-			<input id="new-todo" placeholder="What needs to be done?" autofocus/>
-		</header>
-		<section id="main">
-			<input id="toggle-all" type="checkbox">
-			<label for="toggle-all">Mark all as complete</label>
-			<ul id="todo-list"></ul>
-		</section>
-		<footer id="footer"></footer>
-	</section>
-	<div id="info">
-		<p>Double-click to edit a todo</p>
-		<p>Written by <a href="https://github.com/abmodi">Abhishek Modi</a></p>
-	</div>
+	<div id="landing-page"></div>
+	<div id="content-page"></div>
 	
 	
 
